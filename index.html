@@ -1,932 +1,916 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibukunoluwa Ogunsola | Product Marketing Manager</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#0a0a0a',
-                        accent: '#6366f1',
-                        secondary: '#1a1a1a',
-                        muted: '#737373',
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ibukunoluwa Ogunsola | Product Marketing Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,400;1,9..144,700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Fraunces', 'serif'],
+          },
+          colors: {
+            ink: '#08080C',
+            canvas: '#0F0F17',
+            gold: '#F5A623',
+            'gold-light': '#FBBF24',
+            violet: '#8B5CF6',
+            cyan: '#06B6D4',
+          },
+          animation: {
+            'spin-slow': 'spin 20s linear infinite',
+            'spin-reverse': 'spin 15s linear infinite reverse',
+            'pulse-slow': 'pulse 4s ease-in-out infinite',
+            'marquee': 'marquee 30s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+            float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-18px)' } },
+          },
         }
-    </script>
-    <style>
-        body {
-            background-color: #0a0a0a;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .noise {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .project-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .magnetic-btn {
-            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        
-        .reveal-text {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        }
-        
-        .line-through-hover {
-            position: relative;
-        }
-        
-        .line-through-hover::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #6366f1;
-            transition: width 0.3s ease;
-        }
-        
-        .line-through-hover:hover::after {
-            width: 100%;
-        }
-        
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #6366f1;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-            mix-blend-mode: difference;
-        }
-        
-        .cursor-dot {
-            width: 4px;
-            height: 4px;
-            background: #6366f1;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        
-        @media (max-width: 768px) {
-            .custom-cursor, .cursor-dot { display: none; }
-        }
-        
-        .scroll-indicator {
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#08080C;color:#F9FAFB;font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+    /* ── Cursor ── */
+    .cur-ring{width:32px;height:32px;border:1.5px solid rgba(245,166,35,0.7);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:width .2s,height .2s,border-color .2s;top:0;left:0}
+    .cur-dot{width:5px;height:5px;background:#F5A623;border-radius:50%;position:fixed;pointer-events:none;z-index:9999;top:0;left:0}
+    body:hover .cur-ring{opacity:1}
+
+    /* ── Noise ── */
+    .noise::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.028;pointer-events:none;z-index:999}
+
+    /* ── Glass ── */
+    .glass{background:rgba(255,255,255,0.035);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.08)}
+
+    /* ── Nav link hover ── */
+    .nav-link{position:relative;font-size:.8rem;font-weight:600;letter-spacing:.1em;color:#9CA3AF;transition:color .25s}
+    .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:#F5A623;transition:width .3s}
+    .nav-link:hover{color:#F9FAFB}
+    .nav-link:hover::after{width:100%}
+
+    /* ── Section label ── */
+    .section-label{font-size:.7rem;font-weight:700;letter-spacing:.18em;color:#F5A623;text-transform:uppercase;margin-bottom:.75rem}
+
+    /* ── Gradient text ── */
+    .grad-gold{background:linear-gradient(135deg,#F5A623 0%,#FBBF24 50%,#F97316 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .grad-violet{background:linear-gradient(135deg,#8B5CF6,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* ── Card hover ── */
+    .card-hover{transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s}
+    .card-hover:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(0,0,0,.4),0 0 0 1px rgba(245,166,35,.15)}
+
+    /* ── Timeline ── */
+    .tl-line{position:absolute;left:15px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(245,166,35,.5) 10%,rgba(245,166,35,.5) 90%,transparent)}
+    .tl-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #F5A623;background:#08080C;flex-shrink:0}
+
+    /* ── Skill bar ── */
+    .skill-bar-bg{height:3px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden}
+    .skill-bar-fill{height:100%;background:linear-gradient(90deg,#F5A623,#FBBF24);border-radius:99px;transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+
+    /* ── Tool icon ── */
+    .tool-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;transition:transform .3s}
+    .tool-icon:hover{transform:scale(1.12) rotate(-4deg)}
+
+    /* ── Marquee ── */
+    .marquee-track{display:flex;white-space:nowrap;animation:marquee 32s linear infinite}
+    .marquee-track:hover{animation-play-state:paused}
+
+    /* ── Orb ── */
+    .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+
+    /* ── Stats counter ── */
+    .stat-num{font-family:'Fraunces',serif;font-size:3.5rem;font-weight:700;line-height:1;color:#F5A623}
+
+    /* ── Project tag ── */
+    .tag{display:inline-block;padding:.25rem .75rem;border-radius:99px;background:rgba(255,255,255,.06);font-size:.7rem;font-weight:600;letter-spacing:.04em;color:#9CA3AF;border:1px solid rgba(255,255,255,.08)}
+
+    /* ── Radial progress ── */
+    .radial-ring{transition:stroke-dashoffset 1.4s cubic-bezier(.22,1,.36,1)}
+
+    /* ── Mobile menu ── */
+    #mob-menu{transform:translateX(100%);transition:transform .5s cubic-bezier(.22,1,.36,1)}
+    #mob-menu.open{transform:translateX(0)}
+
+    /* ── Button ── */
+    .btn-gold{background:#F5A623;color:#08080C;font-weight:700;padding:.875rem 2rem;border-radius:99px;display:inline-flex;align-items:center;gap:.5rem;transition:transform .2s,box-shadow .2s}
+    .btn-gold:hover{transform:scale(1.04);box-shadow:0 0 32px rgba(245,166,35,.4)}
+    .btn-outline{border:1px solid rgba(255,255,255,.18);color:#F9FAFB;font-weight:600;padding:.875rem 2rem;border-radius:99px;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
+    .btn-outline:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.35)}
+
+    /* ── Scroll indicator ── */
+    .scroll-bounce{animation:scrollBounce 2s ease-in-out infinite}
+    @keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+    /* ── Pulsing dot ── */
+    .pulse-dot::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:#22C55E;margin-right:6px;animation:pulseDot 2s ease-in-out infinite}
+    @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}50%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+
+    /* ── Profile ring animation ── */
+    @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+    /* ── Hidden for JS reveal ── */
+    .js-reveal{opacity:0;transform:translateY(32px)}
+  </style>
 </head>
-<body class="antialiased selection:bg-indigo-500 selection:text-white">
+<body class="noise">
 
-    <!-- Noise Overlay -->
-    <div class="noise"></div>
-    
-    <!-- Custom Cursor -->
-    <div class="custom-cursor hidden md:block"></div>
-    <div class="cursor-dot hidden md:block"></div>
+  <!-- Custom Cursor -->
+  <div class="cur-ring" id="curRing"></div>
+  <div class="cur-dot" id="curDot"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-40 px-6 py-6 mix-blend-difference">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="font-display font-bold text-2xl tracking-tighter hover:text-indigo-400 transition-colors">
-                OI<span class="text-indigo-500">.</span>
+  <!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#" class="font-serif italic text-xl font-bold text-white">IO<span class="text-gold">.</span></a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about"     class="nav-link">ABOUT</a>
+        <a href="#expertise" class="nav-link">EXPERTISE</a>
+        <a href="#experience"class="nav-link">EXPERIENCE</a>
+        <a href="#projects"  class="nav-link">PROJECTS</a>
+        <a href="#contact"   class="nav-link">CONTACT</a>
+      </div>
+      <a href="#contact" class="hidden md:inline-flex btn-gold text-sm">Let's Talk →</a>
+      <button id="mobToggle" class="md:hidden text-white p-2">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h16M3 12h16M3 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mob-menu" class="fixed inset-0 z-[60] bg-ink flex flex-col items-center justify-center gap-8">
+    <button id="mobClose" class="absolute top-6 right-6 text-white">
+      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <a href="#about"      class="text-2xl font-bold hover:text-gold transition-colors mob-link">About</a>
+    <a href="#expertise"  class="text-2xl font-bold hover:text-gold transition-colors mob-link">Expertise</a>
+    <a href="#experience" class="text-2xl font-bold hover:text-gold transition-colors mob-link">Experience</a>
+    <a href="#projects"   class="text-2xl font-bold hover:text-gold transition-colors mob-link">Projects</a>
+    <a href="#contact"    class="text-2xl font-bold hover:text-gold transition-colors mob-link">Contact</a>
+  </div>
+
+  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+  <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
+    <!-- Orbs -->
+    <div class="orb w-[600px] h-[600px] bg-amber-500/10 top-[-100px] left-[-200px]"></div>
+    <div class="orb w-[500px] h-[500px] bg-violet-600/10 bottom-[-80px] right-[-150px]"></div>
+    <div class="orb w-[300px] h-[300px] bg-cyan-500/8 top-[40%] left-[40%]"></div>
+
+    <div class="max-w-7xl mx-auto w-full relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Left: Text -->
+        <div class="space-y-8">
+          <!-- Badge -->
+          <div id="heroBadge" class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-sm font-semibold">
+            <span class="pulse-dot"></span>
+            <span style="color:#22C55E">Available for new opportunities</span>
+          </div>
+
+          <!-- Title -->
+          <div id="heroMeta" class="section-label">Product Marketing Manager · Lagos, Nigeria</div>
+
+          <!-- Name -->
+          <h1 id="heroName" class="font-serif italic text-6xl md:text-7xl lg:text-8xl font-bold leading-[.92] tracking-tight">
+            Ibukun<br><span class="font-serif not-italic font-bold">oluwa</span><br><span class="grad-gold font-serif italic">Ogunsola</span>
+          </h1>
+
+          <!-- Sub -->
+          <p id="heroSub" class="text-lg text-gray-400 max-w-lg leading-relaxed">
+            Bridging product, sales &amp; marketing to drive <strong class="text-white">strategic GTM execution</strong> and measurable adoption for SaaS &amp; service businesses across Africa and beyond.
+          </p>
+
+          <!-- CTAs -->
+          <div id="heroCta" class="flex flex-wrap gap-4 pt-2">
+            <a href="#projects" class="btn-gold">View Work →</a>
+            <a href="https://www.linkedin.com/in/ibukun-ogunsola1" target="_blank" class="btn-outline">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
             </a>
-            <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
-                <a href="#about" class="line-through-hover hover:text-indigo-400 transition-colors">ABOUT</a>
-                <a href="#expertise" class="line-through-hover hover:text-indigo-400 transition-colors">EXPERTISE</a>
-                <a href="#projects" class="line-through-hover hover:text-indigo-400 transition-colors">PROJECTS</a>
-                <a href="#tools" class="line-through-hover hover:text-indigo-400 transition-colors">TOOLS</a>
-                <a href="#contact" class="line-through-hover hover:text-indigo-400 transition-colors">CONTACT</a>
-            </div>
-            <button id="menuBtn" class="md:hidden text-white">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
+          </div>
         </div>
-    </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-black z-50 transform translate-x-full transition-transform duration-500 md:hidden">
-        <div class="flex flex-col items-center justify-center h-full gap-8 text-2xl font-display">
-            <a href="#about" class="mobile-link hover:text-indigo-400">ABOUT</a>
-            <a href="#expertise" class="mobile-link hover:text-indigo-400">EXPERTISE</a>
-            <a href="#projects" class="mobile-link hover:text-indigo-400">PROJECTS</a>
-            <a href="#tools" class="mobile-link hover:text-indigo-400">TOOLS</a>
-            <a href="#contact" class="mobile-link hover:text-indigo-400">CONTACT</a>
-            <button id="closeMenu" class="absolute top-6 right-6">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
+        <!-- Right: Profile -->
+        <div id="heroImg" class="flex justify-center lg:justify-end relative">
+          <div class="relative w-72 h-72 lg:w-96 lg:h-96">
+            <!-- Spinning rings -->
+            <div class="absolute inset-0 rounded-full border border-gold/20" style="animation:spin 22s linear infinite"></div>
+            <div class="absolute inset-4 rounded-full border border-violet/15" style="animation:spin 16s linear infinite reverse"></div>
+            <div class="absolute inset-8 rounded-full border border-cyan/10" style="animation:spin 10s linear infinite"></div>
+            <!-- Dots -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gold"></div>
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-violet"></div>
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan"></div>
+            <!-- Avatar circle -->
+            <div class="absolute inset-10 rounded-full overflow-hidden glass flex items-center justify-center"
+                 style="background:linear-gradient(135deg,rgba(245,166,35,.18) 0%,rgba(139,92,246,.18) 100%)">
+              <!-- Replace with: <img src="YOUR_LINKEDIN_PHOTO_URL" alt="Ibukunoluwa Ogunsola" class="w-full h-full object-cover"> -->
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <defs>
+                  <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#F5A623" stop-opacity=".25"/>
+                    <stop offset="100%" stop-color="#8B5CF6" stop-opacity=".25"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="100" fill="url(#avatarGrad)"/>
+                <text x="100" y="130" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="82" font-weight="700" fill="white" opacity=".9">IO</text>
+              </svg>
+            </div>
+            <!-- Floating badge -->
+            <div class="absolute bottom-4 -right-4 glass rounded-2xl px-4 py-3 text-center animate-float" style="animation-delay:1s">
+              <div class="text-2xl font-serif font-bold text-gold">5+</div>
+              <div class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Yrs Exp.</div>
+            </div>
+            <div class="absolute top-6 -left-4 glass rounded-2xl px-4 py-3 text-center animate-float">
+              <div class="text-2xl font-serif font-bold text-violet">15+</div>
+              <div class="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">Brands</div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-600/20 rounded-full blur-[100px] animate-pulse-slow"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto w-full relative z-10">
-            <div class="grid md:grid-cols-12 gap-8 items-center">
-                <div class="md:col-span-8 space-y-6">
-                    <div class="overflow-hidden">
-                        <p class="text-indigo-400 font-medium tracking-widest text-sm mb-4 reveal-text translate-y-full" id="heroSubtitle">
-                            PRODUCT MARKETING MANAGER
-                        </p>
-                    </div>
-                    <div class="overflow-hidden">
-                        <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight reveal-text translate-y-full" id="heroTitle">
-                            OGUNSOLA<br>
-                            <span class="gradient-text">IBUKUNOLUWA</span>
-                        </h1>
-                    </div>
-                    <div class="overflow-hidden max-w-2xl">
-                        <p class="text-lg md:text-xl text-gray-400 leading-relaxed reveal-text translate-y-full" id="heroDesc">
-                            Bridging product, sales, and marketing to drive strategic GTM execution and measurable adoption for SaaS businesses.
-                        </p>
-                    </div>
-                    <div class="flex gap-4 pt-4 reveal-text translate-y-full" id="heroCta">
-                        <a href="#projects" class="magnetic-btn group relative px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden hover:scale-105 transition-transform">
-                            <span class="relative z-10">View Projects</span>
-                            <div class="absolute inset-0 bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-                        </a>
-                        <a href="#contact" class="magnetic-btn px-8 py-4 border border-white/20 rounded-full hover:bg-white/10 transition-all hover:scale-105">
-                            Get in Touch
-                        </a>
-                    </div>
-                </div>
-                <div class="md:col-span-4 relative hidden md:block">
-                    <div class="relative w-full aspect-square">
-                        <div class="absolute inset-0 border border-white/10 rounded-full animate-spin-slow" style="animation: spin 20s linear infinite;"></div>
-                        <div class="absolute inset-4 border border-white/5 rounded-full animate-spin-slow" style="animation: spin 15s linear infinite reverse;"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="text-center space-y-2">
-                                <div class="text-6xl font-display font-bold text-white/10">5+</div>
-                                <div class="text-sm text-gray-500 uppercase tracking-widest">Years Exp.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
-            <svg class="w-6 h-6 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-32 px-6 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
-                <div class="space-y-8">
-                    <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight">
-                        Translating complexity into 
-                        <span class="text-indigo-400">clear value</span> that drives revenue.
-                    </h2>
-                    <div class="space-y-6 text-gray-400 text-lg leading-relaxed">
-                        <p>
-                            I specialize in product marketing for SaaS and service-based businesses, with a proven track record of driving go-to-market strategy, positioning, and product adoption. My approach bridges the gap between technical products and market needs.
-                        </p>
-                        <p>
-                            From fintech platforms to entrepreneurship ecosystems, I've led strategic initiatives that transform            pointer-events: none;
-            z-index: 9999;
-        }
-        
-        @media (max-width: 768px) {
-            .custom-cursor, .cursor-dot { display: none; }
-        }
-        
-        .scroll-indicator {
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-    </style>
-</head>
-<body class="antialiased selection:bg-indigo-500 selection:text-white">
-
-    <!-- Noise Overlay -->
-    <div class="noise"></div>
-    
-    <!-- Custom Cursor -->
-    <div class="custom-cursor hidden md:block"></div>
-    <div class="cursor-dot hidden md:block"></div>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-40 px-6 py-6 mix-blend-difference">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="font-display font-bold text-2xl tracking-tighter hover:text-indigo-400 transition-colors">
-                OI<span class="text-indigo-500">.</span>
-            </a>
-            <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
-                <a href="#about" class="line-through-hover hover:text-indigo-400 transition-colors">ABOUT</a>
-                <a href="#expertise" class="line-through-hover hover:text-indigo-400 transition-colors">EXPERTISE</a>
-                <a href="#projects" class="line-through-hover hover:text-indigo-400 transition-colors">PROJECTS</a>
-                <a href="#tools" class="line-through-hover hover:text-indigo-400 transition-colors">TOOLS</a>
-                <a href="#contact" class="line-through-hover hover:text-indigo-400 transition-colors">CONTACT</a>
-            </div>
-            <button id="menuBtn" class="md:hidden text-white">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-black z-50 transform translate-x-full transition-transform duration-500 md:hidden">
-        <div class="flex flex-col items-center justify-center h-full gap-8 text-2xl font-display">
-            <a href="#about" class="mobile-link hover:text-indigo-400">ABOUT</a>
-            <a href="#expertise" class="mobile-link hover:text-indigo-400">EXPERTISE</a>
-            <a href="#projects" class="mobile-link hover:text-indigo-400">PROJECTS</a>
-            <a href="#tools" class="mobile-link hover:text-indigo-400">TOOLS</a>
-            <a href="#contact" class="mobile-link hover:text-indigo-400">CONTACT</a>
-            <button id="closeMenu" class="absolute top-6 right-6">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-        </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-bounce opacity-40">
+      <svg width="24" height="24" fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-600/20 rounded-full blur-[100px] animate-pulse-slow"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+  <!-- ═══════════════════════════ MARQUEE / TICKER ═══════════════════════ -->
+  <div class="py-5 border-y border-white/[.06] overflow-hidden">
+    <div class="marquee-track gap-12" style="display:flex">
+      <div class="flex items-center gap-12 pr-12 shrink-0">
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Go-to-Market Strategy</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Product Positioning</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Brand Building</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">SaaS Marketing</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Sales Enablement</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Digital Visibility</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Community Growth</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Content Strategy</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">User Adoption</span><span class="text-gold text-lg">✦</span>
+      </div>
+      <div class="flex items-center gap-12 pr-12 shrink-0" aria-hidden="true">
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Go-to-Market Strategy</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Product Positioning</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Brand Building</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">SaaS Marketing</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Sales Enablement</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Digital Visibility</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Community Growth</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">Content Strategy</span><span class="text-gold text-lg">✦</span>
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest">User Adoption</span><span class="text-gold text-lg">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ STATS ════════════════════════════════ -->
+  <section class="py-20 px-6 relative">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      <div class="js-reveal text-center">
+        <div class="stat-num" data-target="5" data-suffix="+">0</div>
+        <div class="text-sm text-gray-500 mt-2 font-medium">Years of Experience</div>
+      </div>
+      <div class="js-reveal text-center" style="transition-delay:.1s">
+        <div class="stat-num" data-target="15" data-suffix="+">0</div>
+        <div class="text-sm text-gray-500 mt-2 font-medium">Brands Served</div>
+      </div>
+      <div class="js-reveal text-center" style="transition-delay:.2s">
+        <div class="stat-num" data-target="3" data-suffix="K+">0</div>
+        <div class="text-sm text-gray-500 mt-2 font-medium">Event Registrations Driven</div>
+      </div>
+      <div class="js-reveal text-center" style="transition-delay:.3s">
+        <div class="stat-num" data-target="20" data-suffix="+">0</div>
+        <div class="text-sm text-gray-500 mt-2 font-medium">GTM Campaigns</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ ABOUT ════════════════════════════════ -->
+  <section id="about" class="py-24 px-6 relative">
+    <div class="orb w-[400px] h-[400px] bg-gold/6 top-0 right-0 -translate-y-1/4"></div>
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+
+      <!-- Left -->
+      <div class="space-y-7 js-reveal">
+        <div class="section-label">About Me</div>
+        <h2 class="text-4xl md:text-5xl font-bold leading-[1.1]">
+          Translating complexity into <span class="grad-gold font-serif italic">clear value</span> that drives revenue.
+        </h2>
+        <p class="text-gray-400 leading-relaxed text-[1.05rem]">
+          I'm Ibukunoluwa — a Product Marketing Manager with a deep passion for positioning products at the intersection of people, strategy, and market opportunity. Educated at the University of Lagos, I've spent 5+ years building brands, crafting go-to-market strategies, and enabling sales teams across fintech, EdTech, and SaaS.
+        </p>
+        <p class="text-gray-400 leading-relaxed text-[1.05rem]">
+          From the Tony Elumelu Foundation's continental campaigns to leading LinkedIn masterclasses that reach thousands of professionals, I bridge the gap between technical products and human needs — turning complexity into compelling, revenue-generating narratives.
+        </p>
+
+        <!-- Quote -->
+        <blockquote class="glass rounded-2xl p-6 border-l-2 border-gold">
+          <p class="text-white font-serif italic text-lg leading-relaxed">"I don't just market products — I architect the stories that make markets move."</p>
+          <footer class="mt-3 text-sm text-gray-500 font-semibold">— Ibukunoluwa Ogunsola</footer>
+        </blockquote>
+
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="tag">SaaS</span><span class="tag">Fintech</span><span class="tag">EdTech</span><span class="tag">Consulting</span><span class="tag">Entrepreneurship</span><span class="tag">Lagos, Nigeria</span>
+        </div>
+      </div>
+
+      <!-- Right: Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 js-reveal" style="transition-delay:.15s">
+        <div class="glass rounded-2xl p-6 card-hover col-span-2">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(245,166,35,.12)">
+              <svg width="22" height="22" fill="none" stroke="#F5A623" stroke-width="2" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <div class="text-lg font-bold">Revenue-Driven Marketing</div>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">Every strategy I build is anchored to measurable business outcomes — pipeline, adoption, and revenue growth.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="w-10 h-10 rounded-xl mb-4 flex items-center justify-center" style="background:rgba(139,92,246,.12)">
+            <svg width="20" height="20" fill="none" stroke="#8B5CF6" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div class="font-bold mb-2">Cross-functional Leadership</div>
+          <p class="text-xs text-gray-400 leading-relaxed">Aligning product, sales, and design teams around a unified market narrative.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="w-10 h-10 rounded-xl mb-4 flex items-center justify-center" style="background:rgba(6,182,212,.12)">
+            <svg width="20" height="20" fill="none" stroke="#06B6D4" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <div class="font-bold mb-2">Strategic Insight</div>
+          <p class="text-xs text-gray-400 leading-relaxed">Deep market research and competitive intelligence to find white spaces and win.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ EXPERTISE ════════════════════════════ -->
+  <section id="expertise" class="py-24 px-6 relative" style="background:linear-gradient(180deg,#08080C 0%,#0F0F17 50%,#08080C 100%)">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 js-reveal">
+        <div class="section-label" style="justify-content:center;display:flex">Core Expertise</div>
+        <h2 class="text-4xl md:text-5xl font-bold mt-2">Strategic capabilities that<br><span class="grad-gold font-serif italic">create unfair advantages.</span></h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Skill Card -->
+        <div class="glass rounded-2xl p-7 card-hover js-reveal group" style="transition-delay:.0s">
+          <div class="w-12 h-12 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(245,166,35,.1)">
+            <svg width="22" height="22" fill="none" stroke="#F5A623" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 group-hover:text-gold transition-colors">Go-to-Market Strategy</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5">End-to-end GTM planning from market entry to multi-channel launch orchestration.</p>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div>
+          <div class="flex justify-between text-xs text-gray-500 mt-1"><span>Proficiency</span><span class="text-gold">92%</span></div>
         </div>
 
-        <div class="max-w-7xl mx-auto w-full relative z-10">
-            <div class="grid md:grid-cols-12 gap-8 items-center">
-                <div class="md:col-span-8 space-y-6">
-                    <div class="overflow-hidden">
-                        <p class="text-indigo-400 font-medium tracking-widest text-sm mb-4 reveal-text translate-y-full" id="heroSubtitle">
-                            PRODUCT MARKETING MANAGER
-                        </p>
-                    </div>
-                    <div class="overflow-hidden">
-                        <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight reveal-text translate-y-full" id="heroTitle">
-                            OGUNSOLA<br>
-                            <span class="gradient-text">IBUKUNOLUWA</span>
-                        </h1>
-                    </div>
-                    <div class="overflow-hidden max-w-2xl">
-                        <p class="text-lg md:text-xl text-gray-400 leading-relaxed reveal-text translate-y-full" id="heroDesc">
-                            Bridging product, sales, and marketing to drive strategic GTM execution and measurable adoption for SaaS businesses.
-                        </p>
-                    </div>
-                    <div class="flex gap-4 pt-4 reveal-text translate-y-full" id="heroCta">
-                        <a href="#projects" class="magnetic-btn group relative px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden hover:scale-105 transition-transform">
-                            <span class="relative z-10">View Projects</span>
-                            <div class="absolute inset-0 bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-                        </a>
-                        <a href="#contact" class="magnetic-btn px-8 py-4 border border-white/20 rounded-full hover:bg-white/10 transition-all hover:scale-105">
-                            Get in Touch
-                        </a>
-                    </div>
-                </div>
-                <div class="md:col-span-4 relative hidden md:block">
-                    <div class="relative w-full aspect-square">
-                        <div class="absolute inset-0 border border-white/10 rounded-full animate-spin-slow" style="animation: spin 20s linear infinite;"></div>
-                        <div class="absolute inset-4 border border-white/5 rounded-full animate-spin-slow" style="animation: spin 15s linear infinite reverse;"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="text-center space-y-2">
-                                <div class="text-6xl font-display font-bold text-white/10">5+</div>
-                                <div class="text-sm text-gray-500 uppercase tracking-widest">Years Exp.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="glass rounded-2xl p-7 card-hover js-reveal group" style="transition-delay:.08s">
+          <div class="w-12 h-12 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(139,92,246,.1)">
+            <svg width="22" height="22" fill="none" stroke="#8B5CF6" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 group-hover:text-violet transition-colors">Product Positioning</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5">Crafting differentiated messaging frameworks that resonate and establish market authority.</p>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95" style="background:linear-gradient(90deg,#8B5CF6,#A78BFA)"></div></div>
+          <div class="flex justify-between text-xs text-gray-500 mt-1"><span>Proficiency</span><span class="text-violet">95%</span></div>
         </div>
 
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
-            <svg class="w-6 h-6 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-            </svg>
+        <div class="glass rounded-2xl p-7 card-hover js-reveal group" style="transition-delay:.16s">
+          <div class="w-12 h-12 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(6,182,212,.1)">
+            <svg width="22" height="22" fill="none" stroke="#06B6D4" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 group-hover:text-cyan transition-colors">Product Launch Execution</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5">Coordinating cross-functional teams for high-impact launches that drive immediate adoption.</p>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88" style="background:linear-gradient(90deg,#06B6D4,#22D3EE)"></div></div>
+          <div class="flex justify-between text-xs text-gray-500 mt-1"><span>Proficiency</span><span class="text-cyan">88%</span></div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-32 px-6 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
-                <div class="space-y-8">
-                    <h2 class="font-display text-4xl md:text-5xl font-bold leading-tight">
-                        Translating complexity into 
-                        <span class="text-indigo-400">clear value</span> that drives revenue.
-                    </h2>
-                    <div class="space-y-6 text-gray-400 text-lg leading-relaxed">
-                        <p>
-                            I specialize in product marketing for SaaS and service-based businesses, with a proven track record of driving go-to-market strategy, positioning, and product adoption. My approach bridges the gap between technical products and market needs.
-                        </p>
-                        <p>
-                            From fintech platforms to entrepreneurship ecosystems, I've led strategic initiatives that transform how products are perceived, launched, and adopted in competitive markets.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 glass rounded-full text-sm">SaaS</span>
-                        <span class="px-4 py-2 glass rounded-full text-sm">Fintech</span>
-                        <span class="px-4 py-2 glass rounded-full text-sm">EdTech</span>
-                        <span class="px-4 py-2 glass rounded-full text-sm">Consulting</span>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="glass rounded-2xl p-8 space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-indigo-500/20 rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold">Revenue Growth</div>
-                                <div class="text-sm text-gray-500">Measurable Impact</div>
-                            </div>
-                        </div>
-                        <div class="h-px bg-white/10"></div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold">Cross-functional</div>
-                                <div class="text-sm text-gray-500">Team Alignment</div>
-                            </div>
-                        </div>
-                        <div class="h-px bg-white/10"></div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-pink-500/20 rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold">Strategic</div>
-                                <div class="text-sm text-gray-500">GTM Execution</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="glass rounded-2xl p-7 card-hover js-reveal group" style="transition-delay:.0s">
+          <div class="w-12 h-12 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(249,115,22,.1)">
+            <svg width="22" height="22" fill="none" stroke="#F97316" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 group-hover:text-orange-400 transition-colors">Market Research</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5">Deep competitive analysis and market intelligence to identify growth opportunities.</p>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85" style="background:linear-gradient(90deg,#F97316,#FB923C)"></div></div>
+          <div class="flex justify-between text-xs text-gray-500 mt-1"><span>Proficiency</span><span class="text-orange-400">85%</span></div>
         </div>
-    </section>
 
-    <!-- Expertise Section -->
-    <section id="expertise" class="py-32 px-6 bg-secondary/30 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-indigo-900/10 to-transparent"></div>
-        
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="mb-16">
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Core Expertise</h2>
-                <p class="text-gray-400 text-lg max-w-2xl">Strategic capabilities that drive product success from conception to market dominance.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Expertise Cards -->
-                <div class="expertise-card group p-8 glass rounded-2xl hover:bg-white/5 transition-all duration-500 cursor-pointer">
-                    <div class="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Go-to-Market Strategy</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">End-to-end GTM planning and execution, from market entry strategies to launch orchestration across multiple channels.</p>
-                </div>
-
-                <div class="expertise-card group p-8 glass rounded-2xl hover:bg-white/5 transition-all duration-500 cursor-pointer">
-                    <div class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Product Positioning</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Crafting differentiated messaging frameworks that resonate with target audiences and establish market leadership.</p>
-                </div>
-
-                <div class="expertise-card group p-8 glass rounded-2xl hover:bg-white/5 transition-all duration-500 cursor-pointer">
-                    <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Product Launch Execution</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Coordinating cross-functional teams to deliver high-impact product launches that drive immediate adoption.</p>
-                </div>
-
-                <div class="expertise-card group p-8 glass rounded-2xl hover:bg-white/5 transition-all duration-500 cursor-pointer">
-                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Market Research</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Deep competitive analysis and market intelligence to inform strategic decisions and identify growth opportunities.</p>
-                </div>
-
-                <div class="expertise-card group p-8 glass rounded-2xl hover:bg-white/5 transition-all duration-500 cursor-pointer">
-                    <div class="w-14 h-14 bg-green-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Sales Enablement</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Equipping sales teams with compelling narratives, battle cards, and collateral that accelerate deal velocity.</p>
-                </div>
-
-                <div class="expertise-card group p-8 glass rounded-2xl hover:bg-white/5 transition-all duration-500 cursor-pointer">
-                    <div class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Adoption & Growth</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Implementing data-driven strategies to increase user engagement, reduce churn, and maximize lifetime value.</p>
-                </div>
-            </div>
+        <div class="glass rounded-2xl p-7 card-hover js-reveal group" style="transition-delay:.08s">
+          <div class="w-12 h-12 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(34,197,94,.1)">
+            <svg width="22" height="22" fill="none" stroke="#22C55E" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 group-hover:text-green-400 transition-colors">Sales Enablement</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5">Equipping sales teams with narratives, battle cards, and collateral that accelerate deal velocity.</p>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90" style="background:linear-gradient(90deg,#22C55E,#4ADE80)"></div></div>
+          <div class="flex justify-between text-xs text-gray-500 mt-1"><span>Proficiency</span><span class="text-green-400">90%</span></div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-                <div>
-                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
-                    <p class="text-gray-400 text-lg max-w-2xl">Strategic initiatives showcasing GTM execution, brand positioning, and measurable business impact.</p>
-                </div>
-                <a href="https://www.linkedin.com/in/ibukun-ogunsola1" target="_blank" class="group flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors">
-                    View LinkedIn Profile
-                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="space-y-8">
-                <!-- Project 1 -->
-                <div class="project-card group relative glass rounded-3xl overflow-hidden">
-                    <div class="grid md:grid-cols-2 gap-0">
-                        <div class="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
-                            <div class="text-indigo-400 text-sm font-semibold tracking-wider mb-2">BRAND STRATEGY</div>
-                            <h3 class="text-3xl font-display font-bold mb-4">TEF "Africa Rising"</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed">
-                                Developed comprehensive brand strategy for the Tony Elumelu Foundation's flagship initiative, positioning African entrepreneurship on the global stage and driving engagement across multiple touchpoints.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Brand Positioning</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Campaign Strategy</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Stakeholder Engagement</span>
-                            </div>
-                            <button class="self-start text-sm font-semibold hover:text-indigo-400 transition-colors flex items-center gap-2 group/btn">
-                                View Case Study
-                                <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="relative h-64 md:h-auto bg-gradient-to-br from-indigo-900/50 to-purple-900/50 order-1 md:order-2 flex items-center justify-center overflow-hidden">
-                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%236366f1%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-                            <div class="text-6xl font-display font-bold text-white/10">TEF</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card group relative glass rounded-3xl overflow-hidden">
-                    <div class="grid md:grid-cols-2 gap-0">
-                        <div class="relative h-64 md:h-auto bg-gradient-to-br from-pink-900/50 to-orange-900/50 flex items-center justify-center overflow-hidden">
-                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ec4899%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-                            <div class="text-6xl font-display font-bold text-white/10">Coachli</div>
-                        </div>
-                        <div class="p-8 md:p-12 flex flex-col justify-center">
-                            <div class="text-pink-400 text-sm font-semibold tracking-wider mb-2">BRAND VISIBILITY</div>
-                            <h3 class="text-3xl font-display font-bold mb-4">Coachli Engagement Initiative</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed">
-                                Led brand visibility and user engagement strategy for Coachli, implementing targeted campaigns that increased platform adoption and coach-client match rates through refined positioning.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">User Acquisition</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Content Strategy</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Community Building</span>
-                            </div>
-                            <button class="self-start text-sm font-semibold hover:text-pink-400 transition-colors flex items-center gap-2 group/btn">
-                                View Case Study
-                                <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card group relative glass rounded-3xl overflow-hidden">
-                    <div class="grid md:grid-cols-2 gap-0">
-                        <div class="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
-                            <div class="text-blue-400 text-sm font-semibold tracking-wider mb-2">GTM & ADOPTION</div>
-                            <h3 class="text-3xl font-display font-bold mb-4">Tango Brooks</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed">
-                                Orchestrated go-to-market strategy and adoption programs for Tango Brooks, focusing on market penetration tactics and user onboarding flows that accelerated time-to-value for new customers.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">GTM Strategy</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Onboarding</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Retention</span>
-                            </div>
-                            <button class="self-start text-sm font-semibold hover:text-blue-400 transition-colors flex items-center gap-2 group/btn">
-                                View Case Study
-                                <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="relative h-64 md:h-auto bg-gradient-to-br from-blue-900/50 to-cyan-900/50 order-1 md:order-2 flex items-center justify-center overflow-hidden">
-                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%233b82f6%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-                            <div class="text-6xl font-display font-bold text-white/10">TB</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card group relative glass rounded-3xl overflow-hidden">
-                    <div class="grid md:grid-cols-2 gap-0">
-                        <div class="relative h-64 md:h-auto bg-gradient-to-br from-green-900/50 to-emerald-900/50 flex items-center justify-center overflow-hidden">
-                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%2310b981%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-                            <div class="text-6xl font-display font-bold text-white/10">Paychex</div>
-                        </div>
-                        <div class="p-8 md:p-12 flex flex-col justify-center">
-                            <div class="text-green-400 text-sm font-semibold tracking-wider mb-2">POSITIONING & ENABLEMENT</div>
-                            <h3 class="text-3xl font-display font-bold mb-4">Paychex Product Marketing</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed">
-                                Developed product positioning frameworks and sales enablement materials for Paychex solutions, streamlining the sales process and improving win rates through targeted messaging.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Sales Enablement</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Positioning</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Fintech</span>
-                            </div>
-                            <button class="self-start text-sm font-semibold hover:text-green-400 transition-colors flex items-center gap-2 group/btn">
-                                View Case Study
-                                <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card group relative glass rounded-3xl overflow-hidden">
-                    <div class="grid md:grid-cols-2 gap-0">
-                        <div class="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
-                            <div class="text-purple-400 text-sm font-semibold tracking-wider mb-2">EDTECH MARKETING</div>
-                            <h3 class="text-3xl font-display font-bold mb-4">Utiva Digital Learning</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed">
-                                Provided strategic positioning and marketing support for digital learning programs and tech education offerings, driving enrollment and engagement through targeted campaigns.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">EdTech</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Content Marketing</span>
-                                <span class="px-3 py-1 bg-white/5 rounded-full text-xs">Growth</span>
-                            </div>
-                            <button class="self-start text-sm font-semibold hover:text-purple-400 transition-colors flex items-center gap-2 group/btn">
-                                View Case Study
-                                <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="relative h-64 md:h-auto bg-gradient-to-br from-purple-900/50 to-indigo-900/50 order-1 md:order-2 flex items-center justify-center overflow-hidden">
-                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%238b5cf6%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-                            <div class="text-6xl font-display font-bold text-white/10">Utiva</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="glass rounded-2xl p-7 card-hover js-reveal group" style="transition-delay:.16s">
+          <div class="w-12 h-12 rounded-xl mb-5 flex items-center justify-center" style="background:rgba(236,72,153,.1)">
+            <svg width="22" height="22" fill="none" stroke="#EC4899" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 group-hover:text-pink-400 transition-colors">Personal Branding</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5">Building authentic digital presence and community that creates trust-driven opportunity.</p>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="97" style="background:linear-gradient(90deg,#EC4899,#F9A8D4)"></div></div>
+          <div class="flex justify-between text-xs text-gray-500 mt-1"><span>Proficiency</span><span class="text-pink-400">97%</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Tools Section -->
-    <section id="tools" class="py-32 px-6 bg-secondary/30">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Tech Stack</h2>
-                <p class="text-gray-400 text-lg">Tools and platforms I leverage to drive results</p>
+  <!-- ═══════════════════════════ EXPERIENCE ════════════════════════════ -->
+  <section id="experience" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-16 js-reveal">
+        <div class="section-label">Experience</div>
+        <h2 class="text-4xl md:text-5xl font-bold mt-2">Where I've created <span class="grad-gold font-serif italic">impact.</span></h2>
+      </div>
+
+      <div class="relative pl-12">
+        <div class="tl-line"></div>
+
+        <!-- Item 1 -->
+        <div class="relative mb-12 js-reveal">
+          <div class="tl-dot absolute -left-12">
+            <svg width="14" height="14" fill="#F5A623" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7"/></svg>
+          </div>
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <div class="text-xs font-bold tracking-widest text-gold uppercase mb-1">Current</div>
+                <h3 class="text-xl font-bold">Product Marketing Manager & Brand Strategist</h3>
+                <div class="text-gray-400 font-semibold mt-1">Tango Brook</div>
+              </div>
+              <span class="tag shrink-0">2022 – Present</span>
             </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <div class="tool-card group p-6 glass rounded-2xl text-center hover:bg-white/5 transition-all duration-300 hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-orange-500/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <span class="text-2xl font-bold text-orange-400">Hs</span>
-                    </div>
-                    <div class="font-semibold">HubSpot</div>
-                    <div class="text-xs text-gray-500 mt-1">CRM & Marketing</div>
-                </div>
-
-                <div class="tool-card group p-6 glass rounded-2xl text-center hover:bg-white/5 transition-all duration-300 hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-500/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <span class="text-2xl font-bold text-blue-400">Sf</span>
-                    </div>
-                    <div class="font-semibold">Salesforce</div>
-                    <div class="text-xs text-gray-500 mt-1">CRM</div>
-                </div>
-
-                <div class="tool-card group p-6 glass rounded-2xl text-center hover:bg-white/5 transition-all duration-300 hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-red-500/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <span class="text-2xl font-bold text-red-400">Ga</span>
-                    </div>
-                    <div class="font-semibold">Google Analytics</div>
-                    <div class="text-xs text-gray-500 mt-1">Analytics</div>
-                </div>
-
-                <div class="tool-card group p-6 glass rounded-2xl text-center hover:bg-white/5 transition-all duration-300 hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-purple-500/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <span class="text-2xl font-bold text-purple-400">F</span>
-                    </div>
-                    <div class="font-semibold">Figma</div>
-                    <div class="text-xs text-gray-500 mt-1">Design</div>
-                </div>
-
-                <div class="tool-card group p-6 glass rounded-2xl text-center hover:bg-white/5 transition-all duration-300 hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-cyan-500/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <span class="text-2xl font-bold text-cyan-400">Ca</span>
-                    </div>
-                    <div class="font-semibold">Canva</div>
-                    <div class="text-xs text-gray-500 mt-1">Design</div>
-                </div>
-
-                <div class="tool-card group p-6 glass rounded-2xl text-center hover:bg-white/5 transition-all duration-300 hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-green-500/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <span class="text-2xl font-bold text-green-400">Cr</span>
-                    </div>
-                    <div class="font-semibold">CRM Systems</div>
-                    <div class="text-xs text-gray-500 mt-1">Various</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-32 px-6 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/20 to-transparent"></div>
-        
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="font-display text-5xl md:text-7xl font-bold mb-6">Let's Build Something<br>
-                <span class="gradient-text">Impactful</span>
-            </h2>
-            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-                Ready to drive your next product launch or GTM strategy? Let's discuss how we can translate your product's complexity into market success.
+            <p class="text-sm text-gray-400 leading-relaxed mb-4">
+              Leading go-to-market strategy and brand development at Tango Brook, orchestrating market penetration tactics and user onboarding flows that accelerate time-to-value. Architecting comprehensive brand positioning that drives measurable customer acquisition and retention.
             </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="mailto:ibukun.ogunsola@example.com" class="magnetic-btn group relative px-10 py-5 bg-white text-black font-bold rounded-full overflow-hidden hover:scale-105 transition-transform text-lg">
-                    <span class="relative z-10 flex items-center gap-2">
-                        Schedule a Call
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </span>
-                    <div class="absolute inset-0 bg-indigo-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-                </a>
-                <a href="https://www.linkedin.com/in/ibukun-ogunsola1" target="_blank" class="magnetic-btn px-10 py-5 border border-white/20 rounded-full hover:bg-white/10 transition-all hover:scale-105 text-lg flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                    LinkedIn
-                </a>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">GTM Strategy</span><span class="tag">Brand Strategy</span><span class="tag">User Onboarding</span><span class="tag">Market Penetration</span>
             </div>
-
-            <div class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-                <div>© 2024 Ogunsola Ibukunoluwa. All rights reserved.</div>
-                <div class="flex gap-6">
-                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms</a>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
 
-    <script>
-        // Register GSAP plugins
-        gsap.registerPlugin(ScrollTrigger);
+        <!-- Item 2 -->
+        <div class="relative mb-12 js-reveal" style="transition-delay:.1s">
+          <div class="tl-dot absolute -left-12">
+            <svg width="14" height="14" fill="#8B5CF6" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7"/></svg>
+          </div>
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <h3 class="text-xl font-bold">Brand Partner & LinkedIn Event Lead</h3>
+                <div class="text-gray-400 font-semibold mt-1">Utiva (EdTech)</div>
+              </div>
+              <span class="tag shrink-0">2021 – Present</span>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed mb-4">
+              Spearheaded high-impact virtual masterclasses focused on professional visibility and positioning for ambitious African professionals. Leveraged an engaged LinkedIn community to drive thousands of targeted event registrations. Bridges personal branding, digital visibility, and tech-driven opportunity at scale.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">LinkedIn Strategy</span><span class="tag">Event Marketing</span><span class="tag">Community Building</span><span class="tag">EdTech</span>
+            </div>
+            <!-- Stats pill -->
+            <div class="mt-5 inline-flex items-center gap-3 glass rounded-full px-5 py-2.5">
+              <span class="text-gold text-sm font-bold">3,000+</span>
+              <span class="text-xs text-gray-400">event registrations driven</span>
+            </div>
+          </div>
+        </div>
 
-        // Custom Cursor
-        const cursor = document.querySelector('.custom-cursor');
-        const cursorDot = document.querySelector('.cursor-dot');
-        
-        document.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, {
-                x: e.clientX - 10,
-                y: e.clientY - 10,
-                duration: 0.1
-            });
-            gsap.to(cursorDot, {
-                x: e.clientX - 2,
-                y: e.clientY - 2,
-                duration: 0.5
-            });
-        });
+        <!-- Item 3 -->
+        <div class="relative mb-12 js-reveal" style="transition-delay:.2s">
+          <div class="tl-dot absolute -left-12">
+            <svg width="14" height="14" fill="#06B6D4" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7"/></svg>
+          </div>
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <h3 class="text-xl font-bold">Product Marketing Consultant</h3>
+                <div class="text-gray-400 font-semibold mt-1">Paychex / Coachli (Freelance)</div>
+              </div>
+              <span class="tag shrink-0">2020 – 2022</span>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed mb-4">
+              Developed product positioning frameworks and sales enablement materials for Paychex, streamlining the sales process and improving win rates. Led brand visibility and user engagement strategy for Coachli, implementing targeted campaigns that increased platform adoption and coach-client match rates.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">Positioning</span><span class="tag">Sales Enablement</span><span class="tag">User Acquisition</span><span class="tag">Fintech</span>
+            </div>
+          </div>
+        </div>
 
-        // Magnetic effect for buttons
-        const magneticBtns = document.querySelectorAll('.magnetic-btn');
-        magneticBtns.forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                gsap.to(btn, {
-                    x: x * 0.3,
-                    y: y * 0.3,
-                    duration: 0.3
-                });
-            });
-            
-            btn.addEventListener('mouseleave', () => {
-                gsap.to(btn, {
-                    x: 0,
-                    y: 0,
-                    duration: 0.3
-                });
-            });
-        });
+        <!-- Item 4 -->
+        <div class="relative js-reveal" style="transition-delay:.3s">
+          <div class="tl-dot absolute -left-12">
+            <svg width="14" height="14" fill="#F97316" viewBox="0 0 14 14"><circle cx="7" cy="7" r="7"/></svg>
+          </div>
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <h3 class="text-xl font-bold">Brand Strategist</h3>
+                <div class="text-gray-400 font-semibold mt-1">Tony Elumelu Foundation (TEF)</div>
+              </div>
+              <span class="tag shrink-0">2019 – 2020</span>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed mb-4">
+              Developed comprehensive brand strategy for the "Africa Rising" flagship initiative, positioning African entrepreneurship on the global stage. Drove engagement across multiple touchpoints, stakeholder alignment, and campaign strategy for one of Africa's most influential entrepreneurship ecosystems.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">Brand Strategy</span><span class="tag">Campaign Strategy</span><span class="tag">Stakeholder Engagement</span><span class="tag">Africa</span>
+            </div>
+          </div>
+        </div>
 
-        // Hero Animations
-        const heroTimeline = gsap.timeline();
-        heroTimeline
-            .to('#heroSubtitle', { y: 0, duration: 0.8, ease: 'power3.out' })
-            .to('#heroTitle', { y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-            .to('#heroDesc', { y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-            .to('#heroCta', { y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6');
+      </div>
+    </div>
+  </section>
 
-        // Scroll Animations
-        gsap.utils.toArray('.expertise-card').forEach((card, i) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.6,
-                delay: i * 0.1
-            });
-        });
+  <!-- ════════════════════════════ PROJECTS ════════════════════════════ -->
+  <section id="projects" class="py-24 px-6" style="background:linear-gradient(180deg,#08080C 0%,#0F0F17 100%)">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 js-reveal">
+        <div>
+          <div class="section-label">Featured Projects</div>
+          <h2 class="text-4xl md:text-5xl font-bold mt-2">Strategy in action.</h2>
+        </div>
+        <a href="https://www.linkedin.com/in/ibukun-ogunsola1" target="_blank" class="btn-outline text-sm whitespace-nowrap">View Full Profile →</a>
+      </div>
 
-        gsap.utils.toArray('.project-card').forEach((card, i) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
-                },
-                y: 80,
-                opacity: 0,
-                duration: 0.8,
-                delay: i * 0.15
-            });
-        });
+      <div class="grid md:grid-cols-2 gap-7">
 
-        gsap.utils.toArray('.tool-card').forEach((card, i) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 90%',
-                    toggleActions: 'play none none reverse'
-                },
-                scale: 0.8,
-                opacity: 0,
-                duration: 0.5,
-                delay: i * 0.05
-            });
-        });
+        <!-- Project 1 -->
+        <div class="glass rounded-3xl overflow-hidden card-hover js-reveal group">
+          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#1e1040 0%,#2d1b69 100%)">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="font-serif italic text-7xl font-bold opacity-10 text-white">TEF</span>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.3)">
+                <svg width="32" height="32" fill="none" stroke="#F5A623" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+            </div>
+            <!-- Tag -->
+            <div class="absolute top-4 left-4 bg-gold text-ink text-xs font-bold px-3 py-1 rounded-full">Brand Strategy</div>
+          </div>
+          <div class="p-7">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-gold transition-colors">TEF "Africa Rising"</h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5">Developed comprehensive brand strategy for the Tony Elumelu Foundation's flagship initiative, positioning African entrepreneurship on the global stage across multiple touchpoints and stakeholder categories.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="tag">Brand Positioning</span><span class="tag">Campaign Strategy</span><span class="tag">Stakeholder Engagement</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-xs text-gray-500">Tony Elumelu Foundation · 2019–2020</div>
+            </div>
+          </div>
+        </div>
 
-        // Mobile Menu
-        const menuBtn = document.getElementById('menuBtn');
-        const closeMenu = document.getElementById('closeMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        <!-- Project 2 -->
+        <div class="glass rounded-3xl overflow-hidden card-hover js-reveal group" style="transition-delay:.1s">
+          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%)">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="font-serif italic text-7xl font-bold opacity-10 text-white">TB</span>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:rgba(6,182,212,.2);border:1px solid rgba(6,182,212,.3)">
+                <svg width="32" height="32" fill="none" stroke="#06B6D4" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </div>
+            </div>
+            <div class="absolute top-4 left-4 bg-cyan text-ink text-xs font-bold px-3 py-1 rounded-full">GTM & Adoption</div>
+          </div>
+          <div class="p-7">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-cyan transition-colors">Tango Brook GTM Program</h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5">Orchestrated end-to-end go-to-market strategy and adoption programs, focusing on market penetration tactics and user onboarding flows that dramatically accelerated time-to-value for new customers.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="tag">GTM Strategy</span><span class="tag">User Onboarding</span><span class="tag">Retention</span>
+            </div>
+            <div class="text-xs text-gray-500">Tango Brook · 2022–Present</div>
+          </div>
+        </div>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('translate-x-full');
-        });
+        <!-- Project 3 -->
+        <div class="glass rounded-3xl overflow-hidden card-hover js-reveal group">
+          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#130a2e 0%,#2e1065 100%)">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="font-serif italic text-7xl font-bold opacity-10 text-white">Utiva</span>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:rgba(139,92,246,.2);border:1px solid rgba(139,92,246,.3)">
+                <svg width="32" height="32" fill="none" stroke="#8B5CF6" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.361a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+              </div>
+            </div>
+            <div class="absolute top-4 left-4 bg-violet text-white text-xs font-bold px-3 py-1 rounded-full">EdTech Marketing</div>
+          </div>
+          <div class="p-7">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-violet transition-colors">Utiva LinkedIn Masterclasses</h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5">Designed and led high-impact virtual masterclasses on professional visibility, driving 3,000+ targeted registrations. Bridged personal branding, digital visibility, and tech education to create scalable community impact.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tag">Event Marketing</span><span class="tag">Content Strategy</span><span class="tag">Community Growth</span>
+            </div>
+            <div class="inline-flex items-center gap-2 text-xs font-bold text-gold">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              3,000+ registrations driven
+            </div>
+          </div>
+        </div>
 
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.add('translate-x-full');
-        });
+        <!-- Project 4 -->
+        <div class="glass rounded-3xl overflow-hidden card-hover js-reveal group" style="transition-delay:.1s">
+          <div class="h-48 relative overflow-hidden" style="background:linear-gradient(135deg,#0a1f0a 0%,#052e16 100%)">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="font-serif italic text-7xl font-bold opacity-10 text-white">Coachli</span>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-20 h-20 rounded-full flex items-center justify-center" style="background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.3)">
+                <svg width="32" height="32" fill="none" stroke="#22C55E" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
+              </div>
+            </div>
+            <div class="absolute top-4 left-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">Brand Visibility</div>
+          </div>
+          <div class="p-7">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-green-400 transition-colors">Coachli Engagement Initiative</h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5">Led brand visibility and user engagement strategy, implementing targeted campaigns that increased platform adoption and coach-client match rates through refined positioning and content strategy.</p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="tag">User Acquisition</span><span class="tag">Content Strategy</span><span class="tag">Community Building</span>
+            </div>
+            <div class="text-xs text-gray-500">Coachli · 2020–2021</div>
+          </div>
+        </div>
 
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('translate-x-full');
-            });
-        });
+      </div>
+    </div>
+  </section>
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  <!-- ════════════════════════════ TOOLS ════════════════════════════════ -->
+  <section id="tools" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 js-reveal">
+        <div class="section-label" style="justify-content:center;display:flex">Tech Stack</div>
+        <h2 class="text-4xl md:text-5xl font-bold mt-2">Tools I <span class="grad-gold font-serif italic">leverage</span> to drive results.</h2>
+      </div>
 
-        // Parallax effect for hero background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelectorAll('.animate-pulse-slow');
-            parallax.forEach((el, index) => {
-                const speed = 0.5 + (index * 0.2);
-                el.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-    </script>
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-5 js-reveal">
+        <!-- HubSpot -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(255,122,0,.15)">
+            <span style="color:#FF7A00;font-size:1rem;font-weight:800">Hs</span>
+          </div>
+          <div class="text-xs font-semibold">HubSpot</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">CRM & Marketing</div>
+        </div>
+        <!-- Salesforce -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(0,161,224,.15)">
+            <span style="color:#00A1E0;font-size:1rem;font-weight:800">Sf</span>
+          </div>
+          <div class="text-xs font-semibold">Salesforce</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">CRM</div>
+        </div>
+        <!-- Google Analytics -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(234,67,53,.15)">
+            <span style="color:#EA4335;font-size:1rem;font-weight:800">GA</span>
+          </div>
+          <div class="text-xs font-semibold">Analytics</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">Google</div>
+        </div>
+        <!-- Figma -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(162,89,255,.15)">
+            <span style="color:#A259FF;font-size:1rem;font-weight:800">Fg</span>
+          </div>
+          <div class="text-xs font-semibold">Figma</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">Design</div>
+        </div>
+        <!-- Canva -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(0,200,180,.15)">
+            <span style="color:#00C4B4;font-size:1rem;font-weight:800">Ca</span>
+          </div>
+          <div class="text-xs font-semibold">Canva</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">Design</div>
+        </div>
+        <!-- Notion -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(255,255,255,.08)">
+            <span style="color:#F9FAFB;font-size:1rem;font-weight:800">N</span>
+          </div>
+          <div class="text-xs font-semibold">Notion</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">Productivity</div>
+        </div>
+        <!-- Miro -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(255,213,0,.15)">
+            <span style="color:#FFD500;font-size:1rem;font-weight:800">Mi</span>
+          </div>
+          <div class="text-xs font-semibold">Miro</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">Collaboration</div>
+        </div>
+        <!-- Ahrefs -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(255,100,0,.15)">
+            <span style="color:#FF6400;font-size:1rem;font-weight:800">Ah</span>
+          </div>
+          <div class="text-xs font-semibold">Ahrefs</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">SEO & Research</div>
+        </div>
+        <!-- Semrush -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(255,163,31,.15)">
+            <span style="color:#F5A623;font-size:1rem;font-weight:800">Sr</span>
+          </div>
+          <div class="text-xs font-semibold">Semrush</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">Analytics</div>
+        </div>
+        <!-- Slack -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(74,21,75,.25)">
+            <span style="color:#E01E5A;font-size:1rem;font-weight:800">Sl</span>
+          </div>
+          <div class="text-xs font-semibold">Slack</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">Communication</div>
+        </div>
+        <!-- LinkedIn -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(10,102,194,.15)">
+            <span style="color:#0A66C2;font-size:1rem;font-weight:800">Li</span>
+          </div>
+          <div class="text-xs font-semibold">LinkedIn</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">Social / Brand</div>
+        </div>
+        <!-- Mailchimp -->
+        <div class="glass rounded-2xl p-5 text-center card-hover cursor-default">
+          <div class="tool-icon mx-auto mb-3" style="background:rgba(255,229,0,.12)">
+            <span style="color:#FFE500;font-size:1rem;font-weight:800">Mc</span>
+          </div>
+          <div class="text-xs font-semibold">Mailchimp</div>
+          <div class="text-[10px] text-gray-500 mt-0.5">Email Marketing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ CONTACT ════════════════════════════ -->
+  <section id="contact" class="py-24 px-6 relative overflow-hidden">
+    <div class="orb w-[600px] h-[600px] bg-gold/8 bottom-[-200px] left-1/2 -translate-x-1/2"></div>
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <div class="js-reveal">
+        <div class="section-label" style="justify-content:center;display:flex">Get In Touch</div>
+        <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold mt-4 mb-6 leading-[1.05]">
+          Let's build something <span class="grad-gold font-serif italic">impactful.</span>
+        </h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-xl mx-auto leading-relaxed">
+          Ready to drive your next product launch or GTM strategy? Let's translate your product's complexity into market success.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="mailto:ibukun.ogunsola@gmail.com" class="btn-gold text-base">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Send a Message
+          </a>
+          <a href="https://www.linkedin.com/in/ibukun-ogunsola1" target="_blank" class="btn-outline text-base">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+  <footer class="py-10 px-6 border-t border-white/[.06]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <a href="#" class="font-serif italic text-xl font-bold text-white">IO<span class="text-gold">.</span></a>
+      <div class="text-sm text-gray-600">© 2025 Ibukunoluwa Ogunsola. All rights reserved. · Lagos, Nigeria</div>
+      <div class="flex gap-6 text-sm text-gray-600">
+        <a href="https://www.linkedin.com/in/ibukun-ogunsola1" target="_blank" class="hover:text-gold transition-colors">LinkedIn</a>
+        <a href="mailto:ibukun.ogunsola@gmail.com" class="hover:text-gold transition-colors">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═════════════════════════════ SCRIPTS ════════════════════════════ -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ── Custom Cursor ──────────────────────────────────────────────────
+    const ring = document.getElementById('curRing');
+    const dot  = document.getElementById('curDot');
+    let mx = 0, my = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      gsap.to(dot,  { x: mx - 2.5,  y: my - 2.5,  duration: 0.05 });
+      gsap.to(ring, { x: mx - 16, y: my - 16, duration: 0.18, ease: 'power2.out' });
+    });
+    document.querySelectorAll('a,button,.card-hover').forEach(el => {
+      el.addEventListener('mouseenter', () => { gsap.to(ring, { scale: 1.6, borderColor:'rgba(245,166,35,1)', duration:.2 }); });
+      el.addEventListener('mouseleave', () => { gsap.to(ring, { scale: 1,   borderColor:'rgba(245,166,35,0.7)', duration:.2 }); });
+    });
+
+    // ── Nav scroll glass ───────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navbar.style.background = 'rgba(8,8,12,0.88)';
+        navbar.style.backdropFilter = 'blur(20px)';
+        navbar.style.borderBottom = '1px solid rgba(255,255,255,0.07)';
+        navbar.style.paddingTop = '14px';
+        navbar.style.paddingBottom = '14px';
+      } else {
+        navbar.style.background = 'transparent';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.borderBottom = 'none';
+        navbar.style.paddingTop = '20px';
+        navbar.style.paddingBottom = '20px';
+      }
+    });
+
+    // ── Mobile menu ────────────────────────────────────────────────────
+    const mobMenu  = document.getElementById('mob-menu');
+    const mobOpen  = document.getElementById('mobToggle');
+    const mobClose = document.getElementById('mobClose');
+    mobOpen.addEventListener('click',  () => mobMenu.classList.add('open'));
+    mobClose.addEventListener('click', () => mobMenu.classList.remove('open'));
+    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => mobMenu.classList.remove('open')));
+
+    // ── Hero entrance ──────────────────────────────────────────────────
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.from('#heroBadge', { y: 24, opacity: 0, duration: 0.6 })
+      .from('#heroMeta',  { y: 16, opacity: 0, duration: 0.5 }, '-=0.3')
+      .from('#heroName',  { y: 48, opacity: 0, duration: 0.9 }, '-=0.4')
+      .from('#heroSub',   { y: 24, opacity: 0, duration: 0.7 }, '-=0.6')
+      .from('#heroCta',   { y: 20, opacity: 0, duration: 0.6 }, '-=0.5')
+      .from('#heroImg',   { x: 60, opacity: 0, duration: 1.0 }, '-=0.9');
+
+    // ── Scroll reveals ─────────────────────────────────────────────────
+    gsap.utils.toArray('.js-reveal').forEach((el, i) => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+        y: 0, opacity: 1, duration: 0.75, delay: parseFloat(el.style.transitionDelay || 0), ease: 'power2.out'
+      });
+    });
+
+    // ── Animated number counters ───────────────────────────────────────
+    document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          let current = 0;
+          const step = Math.ceil(target / 40);
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.textContent = current + suffix;
+            if (current >= target) clearInterval(timer);
+          }, 30);
+        }
+      });
+    });
+
+    // ── Skill bar fills ────────────────────────────────────────────────
+    document.querySelectorAll('.skill-bar-fill[data-width]').forEach(bar => {
+      ScrollTrigger.create({
+        trigger: bar,
+        start: 'top 88%',
+        once: true,
+        onEnter: () => {
+          const w = bar.dataset.width / 100;
+          gsap.to(bar, { scaleX: w, duration: 1.3, ease: 'power2.out', delay: 0.2 });
+        }
+      });
+    });
+
+    // ── Parallax orbs ──────────────────────────────────────────────────
+    document.querySelectorAll('.orb').forEach((orb, i) => {
+      gsap.to(orb, {
+        y: i % 2 === 0 ? '-15%' : '15%',
+        scrollTrigger: { trigger: orb, start: 'top bottom', end: 'bottom top', scrub: 1.5 }
+      });
+    });
+
+    // ── Smooth anchor scroll ───────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const tgt = document.querySelector(a.getAttribute('href'));
+        if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
 </body>
 </html>
